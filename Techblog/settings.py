@@ -13,11 +13,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+
+
+import django_heroku  ## for deployment
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = os.path.join(str(BASE_DIR), 'static')
 TEMPLATE_DIR=BASE_DIR/'templates'
 MEDIA_ROOT=BASE_DIR/'media'
+
+#deploy
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
 # Quick-start development settings - unsuitable for production
@@ -205,3 +212,7 @@ AUTH_USER_MODEL = 'blog.User'
 
 #* For editorJS version
 EDITORJS_VERSION = '2.22.1'
+
+
+#activate djnago_heroku
+django_heroku.settings(locals())
